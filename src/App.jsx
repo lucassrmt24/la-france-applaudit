@@ -5,6 +5,7 @@ import { ClapIcon, SparkBurst, HelpIcon, HeartIcon, ChevronDown } from "./compon
 import AmountTicker from "./components/AmountTicker";
 import CountdownBanner from "./components/CountdownBanner";
 import SponsorsBanner from "./components/SponsorsBanner";
+import TeamBanner from "./components/TeamBanner";
 import { useLiveDonations } from "./hooks/useLiveDonations";
 import { useHoverDelay } from "./hooks/useHoverDelay";
 
@@ -36,6 +37,7 @@ export default function App() {
 
   const [bordeauxHover, handleEventCityHover] = useHoverDelay();
   const [sponsorsHover, handleSponsorsHover] = useHoverDelay();
+  const [contactHover, handleContactHover] = useHoverDelay();
 
   return (
     <div className="page">
@@ -65,6 +67,18 @@ export default function App() {
             onMouseLeave={() => handleSponsorsHover(false)}
           >
             <SponsorsBanner />
+          </div>
+        </div>
+      )}
+
+      {contactHover && (
+        <div className="hover-overlay">
+          <div
+            className="hover-zone"
+            onMouseEnter={() => handleContactHover(true)}
+            onMouseLeave={() => handleContactHover(false)}
+          >
+            <TeamBanner />
           </div>
         </div>
       )}
@@ -101,7 +115,13 @@ export default function App() {
             <a href="#comment">Comment ça marche</a>
             <a href="#faq">FAQ</a>
           </div>
-          <button className="btn-contact">Nous contacter</button>
+          <button
+            className="btn-contact"
+            onMouseEnter={() => handleContactHover(true)}
+            onMouseLeave={() => handleContactHover(false)}
+          >
+            Nous contacter
+          </button>
         </nav>
       </header>
 
