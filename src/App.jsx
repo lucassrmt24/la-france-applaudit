@@ -5,6 +5,7 @@ import { ClapIcon, SparkBurst, HelpIcon, HeartIcon, ChevronDown } from "./compon
 import AmountTicker from "./components/AmountTicker";
 import CountdownBanner from "./components/CountdownBanner";
 import InitiativesBanner from "./components/InitiativesBanner";
+import SponsorsBanner from "./components/SponsorsBanner";
 import TeamBanner from "./components/TeamBanner";
 import DonationModal from "./components/DonationModal";
 import FirefighterModal from "./components/FirefighterModal";
@@ -40,6 +41,7 @@ export default function App() {
 
   const [bordeauxHover, handleEventCityHover] = useHoverDelay();
   const [initiativesHover, handleInitiativesHover] = useHoverDelay();
+  const [sponsorsHover, handleSponsorsHover] = useHoverDelay();
   const [contactHover, handleContactHover] = useHoverDelay();
   const [clapCanvasRef, triggerClapBurst] = useClapBurst();
   const [donationModalOpen, setDonationModalOpen] = useState(false);
@@ -99,6 +101,18 @@ export default function App() {
         </div>
       )}
 
+      {sponsorsHover && (
+        <div className="hover-overlay">
+          <div
+            className="hover-zone"
+            onMouseEnter={() => handleSponsorsHover(true)}
+            onMouseLeave={() => handleSponsorsHover(false)}
+          >
+            <SponsorsBanner />
+          </div>
+        </div>
+      )}
+
       {contactHover && (
         <div className="hover-overlay">
           <div
@@ -139,7 +153,13 @@ export default function App() {
             >
               Initiatives
             </a>
-            <a href="#sponsors">Sponsors</a>
+            <a
+              href="#sponsors"
+              onMouseEnter={() => handleSponsorsHover(true)}
+              onMouseLeave={() => handleSponsorsHover(false)}
+            >
+              Sponsors
+            </a>
             <a href="#comment">Comment ça marche</a>
             <a href="#faq">FAQ</a>
           </div>
