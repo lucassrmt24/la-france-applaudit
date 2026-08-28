@@ -53,6 +53,7 @@
   border-radius: 50%;
   background: rgba(91, 157, 255, 0.45);
   animation: ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
 }
 
 @keyframes ping {
@@ -109,6 +110,18 @@
 
 .city-pin-event {
   cursor: pointer;
+}
+
+.city-pin-event .pin-label {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.city-pin-event::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  z-index: -1;
 }
 
 .city-pin-event .pin-ping {
