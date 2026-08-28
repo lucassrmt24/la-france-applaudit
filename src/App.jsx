@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import FranceMap from "./components/FranceMap";
 import { ClapIcon, SparkBurst, HelpIcon, HeartIcon, ChevronDown } from "./components/Icons";
 import AmountTicker from "./components/AmountTicker";
 import CountdownBanner from "./components/CountdownBanner";
+import SponsorsBanner from "./components/SponsorsBanner";
 import { useLiveDonations } from "./hooks/useLiveDonations";
+import { useHoverDelay } from "./hooks/useHoverDelay";
 
 function formatEuros(amount) {
   return `${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} €`;
@@ -32,20 +34,8 @@ export default function App() {
     setTimeout(() => setIntroVisible(false), 420);
   };
 
-  const [bordeauxHover, setBordeauxHover] = useState(false);
-  const hoverHideTimeout = useRef(null);
-
-  const handleEventCityHover = (hovering) => {
-    if (hoverHideTimeout.current) {
-      clearTimeout(hoverHideTimeout.current);
-      hoverHideTimeout.current = null;
-    }
-    if (hovering) {
-      setBordeauxHover(true);
-    } else {
-      hoverHideTimeout.current = setTimeout(() => setBordeauxHover(false), 150);
-    }
-  };
+  const [bordeauxHover, handleEventCityHover] = useHoverDelay();
+  const [sponsorsHover, handleSponsorsHover] = useHoverDelay();
 
   return (
     <div className="page">
@@ -56,13 +46,25 @@ export default function App() {
       )}
 
       {bordeauxHover && (
-        <div className="intro-overlay city-event-overlay">
+        <div className="hover-overlay gold">
           <div
-            className="city-event-hover-zone"
+            className="hover-zone"
             onMouseEnter={() => handleEventCityHover(true)}
             onMouseLeave={() => handleEventCityHover(false)}
           >
             <CountdownBanner intro location="Bordeaux" hint={false} />
+          </div>
+        </div>
+      )}
+
+      {sponsorsHover && (
+        <div className="hover-overlay">
+          <div
+            className="hover-zone"
+            onMouseEnter={() => handleSponsorsHover(true)}
+            onMouseLeave={() => handleSponsorsHover(false)}
+          >
+            <SponsorsBanner />
           </div>
         </div>
       )}
@@ -89,7 +91,13 @@ export default function App() {
           <div className="nav-links">
             <a href="#concept">Le concept</a>
             <a href="#initiatives">Initiatives</a>
-            <a href="#sponsors">Sponsors</a>
+            <a
+              href="#sponsors"
+              onMouseEnter={() => handleSponsorsHover(true)}
+              onMouseLeave={() => handleSponsorsHover(false)}
+            >
+              Sponsors
+            </a>
             <a href="#comment">Comment ça marche</a>
             <a href="#faq">FAQ</a>
           </div>

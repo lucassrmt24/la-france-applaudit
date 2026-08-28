@@ -370,28 +370,47 @@
   pointer-events: none;
 }
 
-.city-event-overlay {
+.hover-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
   cursor: default;
   pointer-events: none;
   animation: intro-fade-in 0.25s ease;
+  background: radial-gradient(ellipse 1200px 900px at 50% 30%, rgba(58, 123, 255, 0.18), transparent 60%),
+    radial-gradient(ellipse 900px 700px at 100% 100%, rgba(255, 59, 78, 0.14), transparent 60%), #050914;
+}
+
+.hover-zone {
+  pointer-events: auto;
+}
+
+.hover-overlay.gold {
   background: radial-gradient(ellipse 1200px 900px at 50% 30%, rgba(255, 184, 28, 0.16), transparent 60%),
     radial-gradient(ellipse 900px 700px at 100% 100%, rgba(255, 59, 78, 0.12), transparent 60%), #050914;
 }
 
-.city-event-hover-zone {
-  pointer-events: auto;
-}
-
-.city-event-overlay .countdown-banner-intro {
+.hover-overlay.gold .countdown-banner-intro {
   background-image: linear-gradient(180deg, #0d1636, #0a1230),
     linear-gradient(90deg, #ffb81c 0%, #ff7a3d 50%, var(--red) 100%);
 }
 
-.city-event-overlay .countdown-title {
+.hover-overlay.gold .countdown-title {
   background: linear-gradient(90deg, #ffd166, #ffffff, var(--red-bright));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.sponsors-banner .countdown-title {
+  font-size: 28px;
+  line-height: 1.35;
+  text-wrap: balance;
+  margin-bottom: 0;
 }
 
 @keyframes intro-fade-in {
