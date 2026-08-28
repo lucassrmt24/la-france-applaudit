@@ -43,9 +43,9 @@ export default function App() {
   const [clapCanvasRef, triggerClapBurst] = useClapBurst();
   const [donationModalOpen, setDonationModalOpen] = useState(false);
 
-  const handleDonationConfirm = () => {
-    setDonationModalOpen(false);
+  const handleDonateClick = () => {
     triggerClapBurst();
+    setTimeout(() => setDonationModalOpen(true), 700);
   };
 
   return (
@@ -53,7 +53,10 @@ export default function App() {
       <canvas ref={clapCanvasRef} className="clap-burst-canvas" />
 
       {donationModalOpen && (
-        <DonationModal onClose={() => setDonationModalOpen(false)} onConfirm={handleDonationConfirm} />
+        <DonationModal
+          onClose={() => setDonationModalOpen(false)}
+          onConfirm={() => setDonationModalOpen(false)}
+        />
       )}
 
       {introVisible && (
@@ -186,7 +189,7 @@ export default function App() {
       </div>
 
       <section className="cta-section">
-        <button className="btn-join" onClick={() => setDonationModalOpen(true)}>
+        <button className="btn-join" onClick={handleDonateClick}>
           <ClapIcon size={26} />
           Faire un don
         </button>
