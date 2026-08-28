@@ -4,7 +4,7 @@ import FranceMap from "./components/FranceMap";
 import { ClapIcon, SparkBurst, HelpIcon, HeartIcon, ChevronDown } from "./components/Icons";
 import AmountTicker from "./components/AmountTicker";
 import CountdownBanner from "./components/CountdownBanner";
-import SponsorsBanner from "./components/SponsorsBanner";
+import InitiativesBanner from "./components/InitiativesBanner";
 import TeamBanner from "./components/TeamBanner";
 import DonationModal from "./components/DonationModal";
 import FirefighterModal from "./components/FirefighterModal";
@@ -39,7 +39,7 @@ export default function App() {
   };
 
   const [bordeauxHover, handleEventCityHover] = useHoverDelay();
-  const [sponsorsHover, handleSponsorsHover] = useHoverDelay();
+  const [initiativesHover, handleInitiativesHover] = useHoverDelay();
   const [contactHover, handleContactHover] = useHoverDelay();
   const [clapCanvasRef, triggerClapBurst] = useClapBurst();
   const [donationModalOpen, setDonationModalOpen] = useState(false);
@@ -87,14 +87,14 @@ export default function App() {
         </div>
       )}
 
-      {sponsorsHover && (
+      {initiativesHover && (
         <div className="hover-overlay">
           <div
             className="hover-zone"
-            onMouseEnter={() => handleSponsorsHover(true)}
-            onMouseLeave={() => handleSponsorsHover(false)}
+            onMouseEnter={() => handleInitiativesHover(true)}
+            onMouseLeave={() => handleInitiativesHover(false)}
           >
-            <SponsorsBanner />
+            <InitiativesBanner />
           </div>
         </div>
       )}
@@ -132,14 +132,14 @@ export default function App() {
         <nav className="nav">
           <div className="nav-links">
             <a href="#concept">Le concept</a>
-            <a href="#initiatives">Initiatives</a>
             <a
-              href="#sponsors"
-              onMouseEnter={() => handleSponsorsHover(true)}
-              onMouseLeave={() => handleSponsorsHover(false)}
+              href="#initiatives"
+              onMouseEnter={() => handleInitiativesHover(true)}
+              onMouseLeave={() => handleInitiativesHover(false)}
             >
-              Sponsors
+              Initiatives
             </a>
+            <a href="#sponsors">Sponsors</a>
             <a href="#comment">Comment ça marche</a>
             <a href="#faq">FAQ</a>
           </div>
