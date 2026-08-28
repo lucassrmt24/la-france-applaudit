@@ -5,6 +5,7 @@ import { ClapIcon, SparkBurst, HelpIcon, HeartIcon, ChevronDown } from "./compon
 import AmountTicker from "./components/AmountTicker";
 import CountdownBanner from "./components/CountdownBanner";
 import ConceptBanner from "./components/ConceptBanner";
+import FAQBanner from "./components/FAQBanner";
 import InitiativesBanner from "./components/InitiativesBanner";
 import SponsorsBanner from "./components/SponsorsBanner";
 import TeamBanner from "./components/TeamBanner";
@@ -41,6 +42,7 @@ export default function App() {
   };
 
   const [conceptHover, handleConceptHover] = useHoverDelay();
+  const [faqHover, handleFaqHover] = useHoverDelay();
   const [bordeauxHover, handleEventCityHover] = useHoverDelay();
   const [initiativesHover, handleInitiativesHover] = useHoverDelay();
   const [sponsorsHover, handleSponsorsHover] = useHoverDelay();
@@ -81,6 +83,18 @@ export default function App() {
             onMouseLeave={() => handleConceptHover(false)}
           >
             <ConceptBanner />
+          </div>
+        </div>
+      )}
+
+      {faqHover && (
+        <div className="hover-overlay">
+          <div
+            className="hover-zone"
+            onMouseEnter={() => handleFaqHover(true)}
+            onMouseLeave={() => handleFaqHover(false)}
+          >
+            <FAQBanner />
           </div>
         </div>
       )}
@@ -181,7 +195,13 @@ export default function App() {
               Sponsors
             </a>
             <a href="#comment">Comment ça marche</a>
-            <a href="#faq">FAQ</a>
+            <a
+              href="#faq"
+              onMouseEnter={() => handleFaqHover(true)}
+              onMouseLeave={() => handleFaqHover(false)}
+            >
+              FAQ
+            </a>
           </div>
           <button
             className="btn-contact"
