@@ -173,7 +173,7 @@ export default function App() {
       <section className="cta-section">
         <button className="btn-join">
           <ClapIcon size={26} />
-          Rejoindre l'événement
+          Faire un don
         </button>
         <p className="cta-caption">C'est gratuit, rapide et ça fait la différence.</p>
         <p className="tagline">No Code is the New Future</p>
