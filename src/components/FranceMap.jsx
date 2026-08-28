@@ -13,7 +13,7 @@ const CITIES = [
   { name: "Paris", count: "8 421", x: 49.75, y: 24.1, side: "right", offset: -4 },
   { name: "Rennes", count: "1 672", x: 21.7, y: 31.5, side: "left", offset: 2 },
   { name: "Lyon", count: "5 392", x: 67.1, y: 54.6, side: "right", offset: -4 },
-  { name: "Bordeaux", count: "3 174", x: 29.4, y: 63.6, side: "left", offset: 6 },
+  { name: "Bordeaux", count: "?", x: 29.4, y: 63.6, side: "left", offset: 6 },
   { name: "Marseille", count: "4 137", x: 70.8, y: 78.8, side: "right", offset: 6 },
 ];
 
