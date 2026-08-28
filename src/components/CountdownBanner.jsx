@@ -47,7 +47,7 @@ export default function CountdownBanner({ intro = false, location = null, hint =
           {isTime ? "C'est maintenant qu'il faut applaudir !" : "C'est bientôt le moment d'applaudir..."}
         </p>
       )}
-      {hint && <p className="countdown-hint">Cliquez n'importe où pour continuer</p>}
+      {hint && <p className="countdown-hint">{typeof hint === "string" ? hint : "Cliquez n'importe où pour continuer"}</p>}
     </section>
   );
 }

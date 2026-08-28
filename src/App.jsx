@@ -7,6 +7,7 @@ import CountdownBanner from "./components/CountdownBanner";
 import SponsorsBanner from "./components/SponsorsBanner";
 import TeamBanner from "./components/TeamBanner";
 import DonationModal from "./components/DonationModal";
+import FirefighterModal from "./components/FirefighterModal";
 import { useLiveDonations } from "./hooks/useLiveDonations";
 import { useHoverDelay } from "./hooks/useHoverDelay";
 import { useClapBurst } from "./hooks/useClapBurst";
@@ -42,6 +43,7 @@ export default function App() {
   const [contactHover, handleContactHover] = useHoverDelay();
   const [clapCanvasRef, triggerClapBurst] = useClapBurst();
   const [donationModalOpen, setDonationModalOpen] = useState(false);
+  const [firefighterModalOpen, setFirefighterModalOpen] = useState(false);
 
   const handleDonateClick = () => {
     triggerClapBurst();
@@ -59,6 +61,8 @@ export default function App() {
         />
       )}
 
+      {firefighterModalOpen && <FirefighterModal onClose={() => setFirefighterModalOpen(false)} />}
+
       {introVisible && (
         <div className={`intro-overlay ${introClosing ? "closing" : ""}`} onClick={closeIntro}>
           <CountdownBanner intro />
@@ -68,11 +72,17 @@ export default function App() {
       {bordeauxHover && (
         <div className="hover-overlay gold">
           <div
-            className="hover-zone"
+            className="hover-zone hover-zone-clickable"
             onMouseEnter={() => handleEventCityHover(true)}
             onMouseLeave={() => handleEventCityHover(false)}
+            onClick={() => setFirefighterModalOpen(true)}
           >
-            <CountdownBanner intro location="Bordeaux" hint={false} applaudMessage />
+            <CountdownBanner
+              intro
+              location="Bordeaux"
+              hint="Appuyez pour comprendre"
+              applaudMessage
+            />
           </div>
         </div>
       )}

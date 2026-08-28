@@ -170,6 +170,42 @@
   }
 }
 
+.firefighter-modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px 28px 32px;
+  border-radius: 26px;
+  background-image: linear-gradient(180deg, #0d1636, #0a1230),
+    linear-gradient(90deg, #ffb81c 0%, #ff7a3d 50%, var(--red) 100%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border: 1.5px solid transparent;
+  box-shadow: 0 0 60px rgba(255, 184, 28, 0.2), 0 0 60px rgba(255, 59, 78, 0.18);
+  text-align: center;
+}
+
+.firefighter-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 22px;
+}
+
+.firefighter-title {
+  font-size: 19px;
+  line-height: 1.35;
+  text-wrap: balance;
+  margin-bottom: 14px;
+}
+
+.firefighter-cta {
+  font-size: 15px;
+  color: #c6cee6;
+  line-height: 1.5;
+}
+
 .clap-burst-canvas {
   position: fixed;
   inset: 0;
@@ -545,6 +581,10 @@
 
 .hover-zone {
   pointer-events: auto;
+}
+
+.hover-zone-clickable {
+  cursor: pointer;
 }
 
 .hover-overlay.gold {
