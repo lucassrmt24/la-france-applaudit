@@ -463,6 +463,31 @@
   padding-bottom: 46px;
 }
 
+.countdown-message {
+  margin-top: 26px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.countdown-message.now {
+  color: var(--red-bright);
+  text-shadow: 0 0 16px rgba(255, 59, 78, 0.6);
+  animation: message-now-pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes message-now-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.03);
+  }
+}
+
 .countdown-hint {
   margin-top: 34px;
   font-size: 13px;

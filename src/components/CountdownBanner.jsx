@@ -5,9 +5,10 @@ function pad(n) {
   return n.toString().padStart(2, "0");
 }
 
-export default function CountdownBanner({ intro = false, location = null, hint = intro }) {
+export default function CountdownBanner({ intro = false, location = null, hint = intro, applaudMessage = false }) {
   const { days, hours, minutes, seconds } = useCountdown();
   const title = location ? `Prochain événement à ${location} dans` : "Prochain événement dans";
+  const isTime = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
 
   return (
     <section className={`countdown-banner ${intro ? "countdown-banner-intro" : ""}`}>
@@ -41,6 +42,11 @@ export default function CountdownBanner({ intro = false, location = null, hint =
           <div className="countdown-label">Secondes</div>
         </div>
       </div>
+      {applaudMessage && (
+        <p className={`countdown-message ${isTime ? "now" : ""}`}>
+          {isTime ? "C'est maintenant qu'il faut applaudir !" : "C'est bientôt le moment d'applaudir..."}
+        </p>
+      )}
       {hint && <p className="countdown-hint">Cliquez n'importe où pour continuer</p>}
     </section>
   );

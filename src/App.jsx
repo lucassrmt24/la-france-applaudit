@@ -52,7 +52,7 @@ export default function App() {
             onMouseEnter={() => handleEventCityHover(true)}
             onMouseLeave={() => handleEventCityHover(false)}
           >
-            <CountdownBanner intro location="Bordeaux" hint={false} />
+            <CountdownBanner intro location="Bordeaux" hint={false} applaudMessage />
           </div>
         </div>
       )}
