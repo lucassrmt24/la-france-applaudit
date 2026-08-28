@@ -6,6 +6,7 @@ import AmountTicker from "./components/AmountTicker";
 import CountdownBanner from "./components/CountdownBanner";
 import SponsorsBanner from "./components/SponsorsBanner";
 import TeamBanner from "./components/TeamBanner";
+import DonationModal from "./components/DonationModal";
 import { useLiveDonations } from "./hooks/useLiveDonations";
 import { useHoverDelay } from "./hooks/useHoverDelay";
 import { useClapBurst } from "./hooks/useClapBurst";
@@ -40,10 +41,20 @@ export default function App() {
   const [sponsorsHover, handleSponsorsHover] = useHoverDelay();
   const [contactHover, handleContactHover] = useHoverDelay();
   const [clapCanvasRef, triggerClapBurst] = useClapBurst();
+  const [donationModalOpen, setDonationModalOpen] = useState(false);
+
+  const handleDonationConfirm = () => {
+    setDonationModalOpen(false);
+    triggerClapBurst();
+  };
 
   return (
     <div className="page">
       <canvas ref={clapCanvasRef} className="clap-burst-canvas" />
+
+      {donationModalOpen && (
+        <DonationModal onClose={() => setDonationModalOpen(false)} onConfirm={handleDonationConfirm} />
+      )}
 
       {introVisible && (
         <div className={`intro-overlay ${introClosing ? "closing" : ""}`} onClick={closeIntro}>
@@ -175,7 +186,7 @@ export default function App() {
       </div>
 
       <section className="cta-section">
-        <button className="btn-join" onClick={() => triggerClapBurst()}>
+        <button className="btn-join" onClick={() => setDonationModalOpen(true)}>
           <ClapIcon size={26} />
           Faire un don
         </button>
