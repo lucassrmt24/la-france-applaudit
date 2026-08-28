@@ -41,11 +41,6 @@ export default function App() {
   const [contactHover, handleContactHover] = useHoverDelay();
   const [clapCanvasRef, triggerClapBurst] = useClapBurst();
 
-  const handleDonateClick = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    triggerClapBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
-  };
-
   return (
     <div className="page">
       <canvas ref={clapCanvasRef} className="clap-burst-canvas" />
@@ -180,7 +175,7 @@ export default function App() {
       </div>
 
       <section className="cta-section">
-        <button className="btn-join" onClick={handleDonateClick}>
+        <button className="btn-join" onClick={() => triggerClapBurst()}>
           <ClapIcon size={26} />
           Faire un don
         </button>
