@@ -660,6 +660,48 @@
   color: var(--blue-bright);
 }
 
+.concept-banner {
+  max-width: 620px;
+  text-align: left;
+}
+
+.concept-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.concept-title {
+  margin-bottom: 0;
+  text-align: left;
+  font-size: 26px;
+}
+
+.concept-text {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #c6cee6;
+  margin-bottom: 18px;
+}
+
+.concept-text strong {
+  color: var(--white);
+  font-weight: 800;
+}
+
+.concept-cta {
+  margin-top: 24px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+}
+
+.initiatives-banner {
+  max-width: 520px;
+}
+
 .initiatives-banner .countdown-title {
   font-size: 28px;
   line-height: 1.35;

@@ -1,15 +1,7 @@
 const COMPANIES = [
   {
     name: "Nordia Assurances",
-    action: "A fait un don de 50 000 €",
-  },
-  {
-    name: "Lumen Tech",
-    action: "A travaillé sur un projet pour aider les plus démunis",
-  },
-  {
-    name: "Atlas Immobilier",
-    action: "A mis ses locaux à disposition pour accueillir les rassemblements hebdomadaires",
+    action: "A fait un don de 1 000 €",
   },
 ];
 

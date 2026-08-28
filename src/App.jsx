@@ -4,6 +4,7 @@ import FranceMap from "./components/FranceMap";
 import { ClapIcon, SparkBurst, HelpIcon, HeartIcon, ChevronDown } from "./components/Icons";
 import AmountTicker from "./components/AmountTicker";
 import CountdownBanner from "./components/CountdownBanner";
+import ConceptBanner from "./components/ConceptBanner";
 import InitiativesBanner from "./components/InitiativesBanner";
 import SponsorsBanner from "./components/SponsorsBanner";
 import TeamBanner from "./components/TeamBanner";
@@ -39,6 +40,7 @@ export default function App() {
     setTimeout(() => setIntroVisible(false), 420);
   };
 
+  const [conceptHover, handleConceptHover] = useHoverDelay();
   const [bordeauxHover, handleEventCityHover] = useHoverDelay();
   const [initiativesHover, handleInitiativesHover] = useHoverDelay();
   const [sponsorsHover, handleSponsorsHover] = useHoverDelay();
@@ -68,6 +70,18 @@ export default function App() {
       {introVisible && (
         <div className={`intro-overlay ${introClosing ? "closing" : ""}`} onClick={closeIntro}>
           <CountdownBanner intro />
+        </div>
+      )}
+
+      {conceptHover && (
+        <div className="hover-overlay">
+          <div
+            className="hover-zone"
+            onMouseEnter={() => handleConceptHover(true)}
+            onMouseLeave={() => handleConceptHover(false)}
+          >
+            <ConceptBanner />
+          </div>
         </div>
       )}
 
@@ -145,7 +159,13 @@ export default function App() {
         </div>
         <nav className="nav">
           <div className="nav-links">
-            <a href="#concept">Le concept</a>
+            <a
+              href="#concept"
+              onMouseEnter={() => handleConceptHover(true)}
+              onMouseLeave={() => handleConceptHover(false)}
+            >
+              Le concept
+            </a>
             <a
               href="#initiatives"
               onMouseEnter={() => handleInitiativesHover(true)}
