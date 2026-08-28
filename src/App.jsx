@@ -8,6 +8,7 @@ import SponsorsBanner from "./components/SponsorsBanner";
 import TeamBanner from "./components/TeamBanner";
 import { useLiveDonations } from "./hooks/useLiveDonations";
 import { useHoverDelay } from "./hooks/useHoverDelay";
+import { useClapBurst } from "./hooks/useClapBurst";
 
 function formatEuros(amount) {
   return `${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} €`;
@@ -38,9 +39,17 @@ export default function App() {
   const [bordeauxHover, handleEventCityHover] = useHoverDelay();
   const [sponsorsHover, handleSponsorsHover] = useHoverDelay();
   const [contactHover, handleContactHover] = useHoverDelay();
+  const [clapCanvasRef, triggerClapBurst] = useClapBurst();
+
+  const handleDonateClick = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    triggerClapBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+  };
 
   return (
     <div className="page">
+      <canvas ref={clapCanvasRef} className="clap-burst-canvas" />
+
       {introVisible && (
         <div className={`intro-overlay ${introClosing ? "closing" : ""}`} onClick={closeIntro}>
           <CountdownBanner intro />
@@ -171,7 +180,7 @@ export default function App() {
       </div>
 
       <section className="cta-section">
-        <button className="btn-join">
+        <button className="btn-join" onClick={handleDonateClick}>
           <ClapIcon size={26} />
           Faire un don
         </button>
