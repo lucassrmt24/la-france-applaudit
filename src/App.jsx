@@ -175,7 +175,9 @@ export default function App() {
           <ClapIcon size={26} />
           Faire un don
         </button>
-        <p className="cta-caption">C'est gratuit, rapide et ça fait la différence.</p>
+        <p className="cta-caption">
+          C'est rapide et ça fait la <span className="cta-highlight">différence</span>.
+        </p>
         <p className="tagline">No Code is the New Future</p>
         <ChevronDown className="scroll-indicator" />
       </section>

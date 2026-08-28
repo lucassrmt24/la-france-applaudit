@@ -656,6 +656,18 @@
   color: #c6cee6;
 }
 
+.cta-highlight {
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--blue-bright), var(--red-bright));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: underline;
+  text-decoration-color: var(--red-bright);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
 .tagline {
   font-size: 15px;
   font-weight: 700;
