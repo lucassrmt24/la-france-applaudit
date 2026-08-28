@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 import FranceMap from "./components/FranceMap";
 import { ClapIcon, SparkBurst, HelpIcon, HeartIcon, ChevronDown } from "./components/Icons";
@@ -32,11 +32,38 @@ export default function App() {
     setTimeout(() => setIntroVisible(false), 420);
   };
 
+  const [bordeauxHover, setBordeauxHover] = useState(false);
+  const hoverHideTimeout = useRef(null);
+
+  const handleEventCityHover = (hovering) => {
+    if (hoverHideTimeout.current) {
+      clearTimeout(hoverHideTimeout.current);
+      hoverHideTimeout.current = null;
+    }
+    if (hovering) {
+      setBordeauxHover(true);
+    } else {
+      hoverHideTimeout.current = setTimeout(() => setBordeauxHover(false), 150);
+    }
+  };
+
   return (
     <div className="page">
       {introVisible && (
         <div className={`intro-overlay ${introClosing ? "closing" : ""}`} onClick={closeIntro}>
           <CountdownBanner intro />
+        </div>
+      )}
+
+      {bordeauxHover && (
+        <div className="intro-overlay city-event-overlay">
+          <div
+            className="city-event-hover-zone"
+            onMouseEnter={() => handleEventCityHover(true)}
+            onMouseLeave={() => handleEventCityHover(false)}
+          >
+            <CountdownBanner intro location="Bordeaux" hint={false} />
+          </div>
         </div>
       )}
 
@@ -100,7 +127,7 @@ export default function App() {
           </div>
         </div>
 
-        <FranceMap />
+        <FranceMap eventCity="Bordeaux" onEventCityHover={handleEventCityHover} />
 
         <div className="side-stat right">
           <div className="stat-icon">

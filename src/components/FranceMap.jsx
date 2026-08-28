@@ -17,9 +17,14 @@ const CITIES = [
   { name: "Marseille", count: "4 137", x: 70.8, y: 78.8, side: "right", offset: 6 },
 ];
 
-function CityPin({ city }) {
+function CityPin({ city, isEventCity, onEventCityHover }) {
   return (
-    <div className="city-pin" style={{ left: `${city.x}%`, top: `${city.y}%` }}>
+    <div
+      className={`city-pin ${isEventCity ? "city-pin-event" : ""}`}
+      style={{ left: `${city.x}%`, top: `${city.y}%` }}
+      onMouseEnter={isEventCity ? () => onEventCityHover(true) : undefined}
+      onMouseLeave={isEventCity ? () => onEventCityHover(false) : undefined}
+    >
       <div className="pin-glyph">
         <div className="pin-ping" />
         <PinGlyph />
@@ -34,7 +39,7 @@ function CityPin({ city }) {
   );
 }
 
-export default function FranceMap() {
+export default function FranceMap({ eventCity, onEventCityHover }) {
   return (
     <div className="map-wrap">
       <svg className="map-svg" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet">
@@ -56,7 +61,12 @@ export default function FranceMap() {
       </svg>
       <div className="pins-layer">
         {CITIES.map((city) => (
-          <CityPin key={city.name} city={city} />
+          <CityPin
+            key={city.name}
+            city={city}
+            isEventCity={city.name === eventCity}
+            onEventCityHover={onEventCityHover}
+          />
         ))}
       </div>
     </div>

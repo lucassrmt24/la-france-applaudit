@@ -107,6 +107,24 @@
   color: #7db2ff;
 }
 
+.city-pin-event {
+  cursor: pointer;
+}
+
+.city-pin-event .pin-ping {
+  background: rgba(255, 184, 28, 0.55);
+  animation-duration: 1.5s;
+}
+
+.city-pin-event .pin-glyph {
+  filter: drop-shadow(0 0 12px rgba(255, 184, 28, 0.9));
+}
+
+.city-pin-event .pin-label {
+  border-color: rgba(255, 184, 28, 0.5);
+  box-shadow: 0 0 16px rgba(255, 184, 28, 0.3);
+}
+
 @media (max-width: 640px) {
   .pin-label {
     padding: 5px 9px;
