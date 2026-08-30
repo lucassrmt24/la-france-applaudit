@@ -194,7 +194,6 @@ export default function App() {
             >
               Sponsors
             </a>
-            <a href="#comment">Comment ça marche</a>
             <a
               href="#faq"
               onMouseEnter={() => handleFaqHover(true)}
