@@ -8,7 +8,7 @@ function getNextEventDate() {
 
   const currentDay = now.getDay(); // 0 = dimanche
   let daysUntilSunday = (7 - currentDay) % 7;
-  if (daysUntilSunday === 0 && now >= target) {
+  if (daysUntilSunday === 0) {
     daysUntilSunday = 7;
   }
   target.setDate(now.getDate() + daysUntilSunday);
