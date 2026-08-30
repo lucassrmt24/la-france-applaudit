@@ -3,6 +3,14 @@ const COMPANIES = [
     name: "Nordia Assurances",
     action: "A fait un don de 1 000 €",
   },
+  {
+    name: "Verdia Group",
+    action: "A fait un don de 3 000 €",
+  },
+  {
+    name: "Atlas Immobilier",
+    action: "A fait un don de 5 000 €",
+  },
 ];
 
 export default function InitiativesBanner() {
